@@ -15,17 +15,17 @@ router.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'..','views','index.html'))
 })
 router.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '..','views', 'login.html'));
-  });
+  res.sendFile(path.join(__dirname, '..','views', 'login.html'));
+});
   
   router.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, '..','views', 'signup.html'));
   });
 
-router.post('/user/add-expense',postExpenseController.postExpense );
+router.post('/expense/add-expense',postExpenseController.postExpense );
 
-  router.get('/user/get-expense',postExpenseController.getExpense)
+  router.get('/expense/get-expense',postExpenseController.getExpense)
 
-router.delete('/user/delete-expense/:id',postExpenseController.deleteExpense)
+router.delete('/expense/delete-expense/:id',postExpenseController.deleteExpense)
 
 module.exports=router;

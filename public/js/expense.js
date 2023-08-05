@@ -21,8 +21,9 @@ async function OnSubmit(event){
  console.log(obj)
  try{
    
-     const response=await axios.post('http://localhost:2000/user/add-expense',obj)
+     const response=await axios.post('http://localhost:2000/expense/add-expense',obj)
      console.log(obj)
+     
      console.log(response.data.newexpenseDetail)
      showdetails()
 
@@ -36,7 +37,7 @@ async function OnSubmit(event){
 
 async function showdetails() {
     try {
-        const response = await axios.get('http://localhost:2000/user/get-expense');
+        const response = await axios.get('http://localhost:2000/expense/get-expense');
         const data = response.data.allExpenses;
         const tableBody = document.getElementById('expense-table-body');
         tableBody.innerHTML = '';
@@ -73,7 +74,7 @@ async function showdetails() {
      row.appendChild(deletebutton)
      deletebutton.onclick= async ()=>{
          try{
-             const response=await axios.delete(`http://localhost:2000/user/delete-expense/${object.id}`)
+             const response=await axios.delete(`http://localhost:2000/expense/delete-expense/${object.id}`)
              tableBody.removeChild(row)                       
          }
          catch(error){
@@ -101,9 +102,9 @@ async function updateExpense() {
 
         console.log(updatedObject);
 
-        const response = await axios.put(`http://localhost:2000/user/update-expense/${currentlyEditingId}`, updatedObject);
+        const response = await axios.put(`http://localhost:2000/expense/update-expense/${currentlyEditingId}`, updatedObject);
         if (response.status === 200) {
-            // Reset currentlyEditingId after successful update
+          
             currentlyEditingId = null;
             showdetails();
         }
