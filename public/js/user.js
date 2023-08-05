@@ -9,10 +9,10 @@ async function OnSubmit(event){
     
 
     try{
-        const response= await axios.post('http://localhost:2000/user',obj)
+        const response= await axios.post('http://localhost:2000/user/login',obj)
         console.log(response.data.newUserdata)
         if(response.status===201){
-          window.location.href='/user'  
+          window.location.href='/expense.html'  
         }
         else{
             throw new Error('failed to login')

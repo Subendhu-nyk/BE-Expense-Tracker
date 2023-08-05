@@ -14,17 +14,17 @@ async function OnSubmit(event){
     console.log(obj)
 
     try{
-        const response= await axios.post('http://localhost:3000/user',obj)
+        const response= await axios.post('http://localhost:2000/signup',obj)
         console.log(response.data.newUserdata)
         if(response.status===201){
           window.location.href='/'  
         }
         else{
-            throw new Error('failed to login')
+            throw new Error('failed to signup')
         }
     }
     catch (err){
-        console.log(err)
+        console.log("failed"+ err)
     }
 
 }

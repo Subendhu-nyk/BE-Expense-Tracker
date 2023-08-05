@@ -1,3 +1,5 @@
+const Sequelize = require('../models/expense');
+
 exports.postExpense=async (req, res) => {
     try {
       const name = req.body.name;
